@@ -1,0 +1,31 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="margin-bottom">
+    <label for="firstName">First Name <span class="required">*</span></label>
+    <input id="firstName" formControlName="firstName" />
+  </div>
+  <div class="margin-bottom">
+    <label for="lastName">Last Name <span class="required">*</span></label>
+    <input id="lastName" formControlName="lastName" />
+
+    @if (lastName.errors?.['required']) {
+      <p class="error">Last name is required.</p>
+    }
+    @if (lastName.errors?.['minlength']) {
+      <p class="error">Last name must be at least 5 characters long.</p>
+    }
+  </div>
+  <div class="margin-bottom">
+    <label for="email">Email <span class="required">*</span></label>
+    <input id="email" formControlName="email" />
+
+    @if (email.errors?.['mustContainCentricDomain']) {
+      <p class="error">Email must contain @centric.eu domain.</p>
+    }
+    
+  </div>
+  <div class="margin-bottom">
+    <label for="age">Age <span class="required">*</span></label>
+    <input id="age" formControlName="age" />
+  </div>
+  <button type="submit">Submit</button>
+</form>

@@ -1,0 +1,58 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="margin-bottom">
+        <mat-form-field>
+            <mat-label for="name">Name</mat-label>
+            <input matInput
+                         id="name"
+                         type="text"
+                         formControlName="name">
+        </mat-form-field>
+    </div>
+
+    @if (name.errors) {
+    <p class="error">Name must have maximum 10 characters.</p>
+    }
+
+    <div class="margin-bottom">
+        <mat-form-field>
+            <mat-label for="value">Price</mat-label>
+            <input matInput
+                         id="value"
+                         type="number"
+                         formControlName="value">
+        </mat-form-field>
+    </div>
+
+    @if (value.errors) {
+    <p class="error">Value should be between 10 and 100.</p>
+    }
+
+    <div class="margin-bottom">
+        <mat-form-field>
+            <mat-label for="description">Description</mat-label>
+            <input matInput
+                         id="description"
+                         type="text"
+                         formControlName="description">
+        </mat-form-field>
+    </div>
+
+    <div class="margin-bottom">
+        <mat-form-field>
+            <mat-label for="category">Category</mat-label>
+            <input matInput
+                         id="category"
+                         type="text"
+                         formControlName="category">
+        </mat-form-field>
+    </div>
+
+    @if (category.errors?.['mustContainElectronicsInName']) {
+        <p class="error">Category must include 'electronics'.</p>
+    }
+
+    <!-- Disable submit until the whole form is valid. -->
+    <button mat-flat-button
+                    type="submit"
+                    [disabled]="!productForm.valid">Submit</button>
+</form>

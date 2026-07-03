@@ -1,0 +1,45 @@
+<!-- Default Template with pure HTML-->
+<!-- <section class="products">
+  <h1>Products</h1>
+  <ul class="product-list">
+    @for (product of products; track product.id) {
+      <li>
+        <a [routerLink]="[product.id]">{{ product.name }}</a>
+      </li>
+    }
+  </ul>
+
+  <div>
+    <router-outlet />
+  </div>
+</section> -->
+<!-- Default Template with pure HTML-->
+
+<!-- Angular Material version-->
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <mat-icon>storefront</mat-icon>
+    </div>
+    <mat-card-title>Products</mat-card-title>
+    <mat-card-subtitle>{{ products.length }} products - Select one</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-nav-list>
+      <!-- Create one navigation item for each product. -->
+      @for (product of products; track product.id) {
+        <!-- Clicking a product navigates to /products/:id and renders ProductDetailsComponent below. -->
+        <a mat-list-item [routerLink]="['/products', product.id]">
+          {{ product.name }}
+        </a>
+      }
+    </mat-nav-list>
+  </mat-card-content>
+</mat-card>
+<br/>
+
+<div>
+  <!-- Child route content appears here, such as /products/1. -->
+  <router-outlet />
+</div>

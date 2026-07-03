@@ -1,0 +1,66 @@
+<form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+  <!-- Disabled id field. It is auto-calculated in the component from the highest existing car id. -->
+  <div class="margin-bottom">
+    <label for="id">Id</label>
+    <input id="id" type="number" formControlName="id" />
+  </div>
+
+  <div class="margin-bottom">
+    <label for="brand">Brand <span class="required">*</span></label>
+    <select id="brand" formControlName="brand">
+      <option value="">Select brand</option>
+      @for (brand of brandOptions; track brand) {
+        <option [value]="brand">{{ brand }}</option>
+      }
+    </select>
+  </div>
+
+  @if (brand.errors?.['required']) {
+    <p class="error">Brand is required.</p>
+  }
+
+  <div class="margin-bottom">
+    <label for="model">Model <span class="required">*</span></label>
+    <input id="model" type="text" formControlName="model" />
+  </div>
+
+  @if (model.errors?.['required']) {
+    <p class="error">Model is required.</p>
+  }
+
+  <div class="margin-bottom">
+    <label for="year">Year <span class="required">*</span></label>
+    <input id="year" type="number" formControlName="year" />
+  </div>
+
+  @if (year.errors?.['required']) {
+    <p class="error">Year is required.</p>
+  }
+  @if (year.errors?.['min']) {
+    <p class="error">Year must be at least 1886.</p>
+  }
+
+  <div class="margin-bottom">
+    <label for="price">Price <span class="required">*</span></label>
+    <input id="price" type="number" formControlName="price" />
+  </div>
+
+  @if (price.errors?.['required']) {
+    <p class="error">Price is required.</p>
+  }
+  @if (price.errors?.['min']) {
+    <p class="error">Price must be greater than 0.</p>
+  }
+
+  <div class="margin-bottom">
+    <label for="color">Color <span class="required">*</span></label>
+    <input id="color" type="text" formControlName="color" />
+  </div>
+
+  @if (color.errors?.['required']) {
+    <p class="error">Color is required.</p>
+  }
+
+  <!-- The button stays disabled until all validators pass. -->
+  <button type="submit" [disabled]="carForm.invalid">Create car</button>
+</form>

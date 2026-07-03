@@ -1,0 +1,160 @@
+:host {
+  display: block;
+  width: 100%;
+  padding-top: 1rem;
+}
+
+.example-card {
+  width: 100%;
+  max-width: none;
+  border: 1px solid #e4b8a0;
+  border-radius: 8px;
+  background-color: #fffaf6;
+  box-shadow: 0 10px 24px rgba(88, 53, 34, 0.14);
+  overflow: hidden;
+}
+
+.example-card mat-card-header {
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background-color: #9a4d2f;
+  color: white;
+}
+
+.example-card mat-card-subtitle {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.example-card [mat-card-avatar] {
+  display: grid;
+  place-items: center;
+  background-color: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.example-card mat-card-content {
+  padding: 1.5rem;
+}
+
+.car-detail,
+.empty-state {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid #e4b8a0;
+  border-radius: 6px;
+  background-color: #ffffff;
+}
+
+.car-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem;
+  border: 1px solid #e4b8a0;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #fff7f1 0%, #f3fbf6 100%);
+}
+
+.car-title-row > mat-icon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #285a43;
+  color: white;
+  font-size: 1.7rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.2rem;
+  color: #9a4d2f;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.detail-grid p {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.85rem;
+  border: 1px solid #e4b8a0;
+  border-radius: 6px;
+  background-color: #fff7f1;
+}
+
+.detail-grid mat-icon {
+  color: #285a43;
+}
+
+.detail-grid span {
+  color: #9a4d2f;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.detail-grid strong {
+  color: #4f2e20;
+  font-size: 1rem;
+}
+
+h2 {
+  margin: 0;
+  color: #73391f;
+}
+
+.car-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid #e4b8a0;
+  border-radius: 6px;
+  background-color: #f3fbf6;
+  color: #285a43;
+  font-weight: 800;
+}
+
+.car-note mat-icon {
+  color: #285a43;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button[mat-flat-button].delete-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 6px;
+  background-color: #9a2f24;
+  color: white;
+  font-weight: 800;
+}
+
+button[mat-flat-button].delete-button:hover,
+button[mat-flat-button].delete-button:focus {
+  background-color: #7f251d;
+}
+
+p {
+  margin: 0;
+  color: #66573f;
+  line-height: 1.5;
+}
+
+.empty-state {
+  color: #73391f;
+  font-weight: 700;
+}

@@ -1,0 +1,63 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <mat-icon>garage</mat-icon>
+    </div>
+    <mat-card-title>Car detail</mat-card-title>
+    <mat-card-subtitle>Selected car information</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <!-- The async pipe subscribes to car$ and gives the template the selected car. -->
+    @if (car$ | async; as car) {
+      <div class="car-detail">
+        <div class="car-title-row">
+          <mat-icon>directions_car</mat-icon>
+          <div>
+            <span class="eyebrow">Featured vehicle</span>
+            <h2>{{ car.brand | uppercase }} {{ car.model | uppercase }}</h2>
+          </div>
+        </div>
+
+        <div class="detail-grid">
+          <p>
+            <mat-icon>badge</mat-icon>
+            <span>Model</span>
+            <strong>{{ car.model | uppercase }}</strong>
+          </p>
+          <p>
+            <mat-icon>event</mat-icon>
+            <span>Year</span>
+            <strong>{{ car.year }}</strong>
+          </p>
+          <p>
+            <mat-icon>palette</mat-icon>
+            <span>Color</span>
+            <strong>{{ car.color | titlecase }}</strong>
+          </p>
+          <p>
+            <mat-icon>euro</mat-icon>
+            <span>Price</span>
+            <strong>{{ car.price | currency:'EUR' }}</strong>
+          </p>
+        </div>
+
+        <div class="car-note">
+          <mat-icon>verified</mat-icon>
+          <span>Inspected and ready for a new owner.</span>
+        </div>
+
+        <!-- Calls deleteCar(car.id), which deletes the car through CarsService. -->
+        <div class="actions">
+          <button mat-flat-button type="button" class="delete-button" (click)="deleteCar(car.id)">
+            <mat-icon>delete</mat-icon>
+            Delete car
+          </button>
+        </div>
+      </div>
+    } @else {
+      <!-- This appears while the HTTP request is still loading. -->
+      <p class="empty-state">Loading car details...</p>
+    }
+  </mat-card-content>
+</mat-card>

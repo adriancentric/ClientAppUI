@@ -1,0 +1,57 @@
+<!-- Default Template with pure HTML-->
+<!-- <div>
+  <h2>Product detail</h2>
+  <p>Selected product id: <strong>{{ id() }}</strong></p>
+</div> -->
+<!-- Default Template with pure HTML -->
+
+<!-- Angular Material version -->
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <mat-icon>inventory</mat-icon>
+    </div>
+    <mat-card-title>Product detail</mat-card-title>
+    <mat-card-subtitle>Selected product information</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <!-- productDetails() reads the current signal value from the component. -->
+    @if (productDetails(); as productDetails) {
+      <!-- If a product exists for the route id, display it. -->
+      @if (productDetails.product; as product) {
+      <div class="product-detail">
+        <h2>{{ product.name | titlecase }}</h2>
+
+        <!-- Product fields are formatted with pipes before being displayed. -->
+        <div class="detail-grid">
+          <p>
+            <span>Model</span>
+            <strong>{{ product.model | uppercase }}</strong>
+          </p>
+          <p>
+            <span>Created</span>
+            <strong>{{ product.createdDate | date:'mediumDate' }}</strong>
+          </p>
+          <p>
+            <span>Price</span>
+            <strong>{{ product.price | currency:'EUR' }}</strong>
+          </p>
+        </div>
+
+        <!-- Render five icons and fill only the ones within the product rating. -->
+        <div class="rating">
+          @for (star of [1, 2, 3, 4, 5]; track star) {
+            <mat-icon>{{ star <= product.rating ? 'star' : 'star_border' }}</mat-icon>
+          }
+          <span>{{ product.rating }} / 5</span>
+        </div>
+      </div>
+      } @else {
+        <!-- Fallback if the route id does not match any product. -->
+        <p class="empty-state">No product found for id {{ productDetails.id }}.</p>
+      }
+    }
+  </mat-card-content>
+</mat-card>
+<!-- Angular Material version -->

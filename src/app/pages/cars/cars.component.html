@@ -1,0 +1,45 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <mat-icon>directions_car</mat-icon>
+    </div>
+    <mat-card-title>Cars</mat-card-title>
+    <mat-card-subtitle>Select a car to see more details</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <!-- Dropdown used to choose which brand should be visible in the list. -->
+    <label class="brand-filter">
+      <span>Filter by brand</span>
+      <select [value]="selectedBrand" (change)="onBrandChange($event)">
+        <!-- Create one option for each value from the CarBrand enum. -->
+        @for (brand of carBrands; track brand) {
+          <option [value]="brand">{{ brand === 'all' ? 'All brands' : brand }}</option>
+        }
+      </select>
+    </label>
+
+    <!-- The async pipe subscribes to cars$ and gives us the latest cars array. -->
+    @if (cars$ | async; as cars) {
+      <mat-nav-list>
+        <!-- Loop through all cars from the API. track car.id helps Angular update the list efficiently. -->
+        @for (car of cars; track car.id) {
+          <!-- Only show the car when it matches the selected brand filter. -->
+          @if (isCarVisible(car.brand)) {
+            <!-- Navigate to the child route /cars/:id, which renders CarDetailsComponent below. -->
+            <a mat-list-item [routerLink]="['/cars', car.id]">
+              {{ car.brand }} {{ car.model }}
+            </a>
+          }
+        }
+      </mat-nav-list>
+    } @else {
+      <p class="empty-state">Loading cars...</p>
+    }
+  </mat-card-content>
+</mat-card>
+
+<div class="details-outlet">
+  <!-- Child routes render here. For example, /cars/1 shows the selected car details. -->
+  <router-outlet />
+</div>

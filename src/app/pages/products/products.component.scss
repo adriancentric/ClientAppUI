@@ -1,0 +1,94 @@
+.products {
+  padding: 50px;
+}
+
+.product-list {
+  list-style: none;
+  padding: 0;
+}
+
+.product-list a {
+  color: #1565c0;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.product-list a:hover {
+  text-decoration: underline;
+}
+
+// ------------------------------
+
+form {
+	max-width: 640px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0.75rem;
+	box-sizing: border-box;
+}
+
+.error {
+  color: red;
+}
+
+:host {
+  display: block;
+  width: 100%;
+  min-height: calc(100vh - 48px);
+  padding: 2rem;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #f4f8fb 0%, #e7eef5 100%);
+}
+
+.example-card {
+  width: 100%;
+  max-width: none;
+  border: 1px solid #c8d7e4;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 24px rgba(31, 57, 77, 0.12);
+  overflow: hidden;
+}
+
+.example-card mat-card-header {
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background-color: #2f5f7f;
+  color: white;
+}
+
+.example-card mat-card-subtitle {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.example-card [mat-card-avatar] {
+  display: grid;
+  place-items: center;
+  background-color: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.example-card mat-card-content {
+  padding: 1rem 1.5rem 1.5rem;
+}
+
+mat-nav-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+mat-nav-list a[mat-list-item] {
+  height: auto;
+  min-height: 3rem;
+  border: 1px solid #d7e2ea;
+  border-radius: 6px;
+  background-color: #f8fbfd;
+  transition: background-color 150ms ease-in-out, border-color 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+mat-nav-list a[mat-list-item]:hover {
+  background-color: #eaf3f8;
+  border-color: #8db4cf;
+  transform: translateY(-2px);
+}
