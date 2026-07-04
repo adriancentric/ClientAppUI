@@ -1,15 +1,35 @@
 
 <nav class="navbar">
-  <a routerLink="/products">Products</a>
-  <span class="separator">|</span>
-  <a routerLink="/products-form">Products Form</a>
-  <span class="separator">|</span>
-  <a routerLink="/cars">Cars</a>
-  <span class="separator">|</span>
-  <a routerLink="/car-form">Add a car</a>
-  <span class="separator">|</span>
-  <a routerLink="/user">User</a>
-  <span class="separator">|</span>
-  <a routerLink="/not-found">Not Found</a>
+  <!-- Left section: welcome message when logged in -->
+  <div class="navbar-left">
+    @if (authService.isLoggedIn()) {
+      <span class="welcome">Welcome, {{ authService.username() }}</span>
+    }
+  </div>
+
+  <!-- Center section: main navigation links -->
+  <div class="navbar-center">
+    <a routerLink="/products">Products</a>
+    <span class="separator">|</span>
+    <a routerLink="/products-form">Products Form</a>
+    <span class="separator">|</span>
+    <a routerLink="/cars">Cars</a>
+    <span class="separator">|</span>
+    <a routerLink="/car-form">Add a car</a>
+    <span class="separator">|</span>
+    <a routerLink="/user">User</a>
+    <span class="separator">|</span>
+    <a routerLink="/not-found">Not Found</a>
+  </div>
+
+  <!-- Right section: auth buttons -->
+  <div class="navbar-right">
+    @if (authService.isLoggedIn()) {
+      <button class="btn-logout" (click)="logout()">Logout</button>
+    } @else {
+      <a routerLink="/login" class="btn-auth">Login</a>
+      <a routerLink="/register" class="btn-auth btn-register">Register</a>
+    }
+  </div>
 </nav>
 <router-outlet />

@@ -7,6 +7,9 @@ import { ProductsFormComponent } from './pages/products-form/products-form.compo
 import { CarsComponent } from './pages/cars/cars.component';
 import { CarDetailsComponent } from './pages/car-details/car-details.component';
 import { CarFormComponent } from './pages/car-form/car-form.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   //Empty path -> send the user to /products
@@ -28,10 +31,23 @@ export const routes: Routes = [
     component: ProductsFormComponent
   },
 
-  // /car-form renders CarFormComponent
+  // /login renders LoginComponent
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+
+  // /register renders RegisterComponent
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+
+  // /car-form renders CarFormComponent — protected by authGuard
   {
     path: 'car-form',
-    component: CarFormComponent
+    component: CarFormComponent,
+    canActivate: [authGuard]
   },
 
   // /cars renders CarsComponent

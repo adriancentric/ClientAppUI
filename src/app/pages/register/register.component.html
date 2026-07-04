@@ -1,0 +1,41 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="form-title">
+    <h2>Create account</h2>
+    <p>Register to get started</p>
+  </div>
+
+  <!-- Username field -->
+  <div class="margin-bottom">
+    <label for="username">Username <span class="required">*</span></label>
+    <input id="username" type="text" formControlName="username" autocomplete="username" />
+    @if (username.errors?.['required'] && username.touched) {
+      <p class="error">Username is required.</p>
+    }
+    @if (username.errors?.['minlength'] && username.touched) {
+      <p class="error">Username must be at least 3 characters.</p>
+    }
+  </div>
+
+  <!-- Password field -->
+  <div class="margin-bottom">
+    <label for="password">Password <span class="required">*</span></label>
+    <input id="password" type="password" formControlName="password" autocomplete="new-password" />
+    @if (password.errors?.['required'] && password.touched) {
+      <p class="error">Password is required.</p>
+    }
+    @if (password.errors?.['minlength'] && password.touched) {
+      <p class="error">Password must be at least 6 characters.</p>
+    }
+  </div>
+
+  <!-- API error shown when registration fails -->
+  @if (errorMessage) {
+    <p class="error api-error">{{ errorMessage }}</p>
+  }
+
+  <button type="submit" [disabled]="registerForm.invalid">Create account</button>
+
+  <p class="switch-link">
+    Already have an account? <a routerLink="/login">Sign in</a>
+  </p>
+</form>
