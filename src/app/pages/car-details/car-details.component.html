@@ -49,10 +49,12 @@
 
         <!-- Calls deleteCar(car.id), which deletes the car through CarsService. -->
         <div class="actions">
-          <button mat-flat-button type="button" class="delete-button" (click)="deleteCar(car.id)">
-            <mat-icon>delete</mat-icon>
-            Delete car
-          </button>
+          @if (!isUserRole) {
+            <button mat-flat-button type="button" class="delete-button" (click)="deleteCar(car.id)">
+              <mat-icon>delete</mat-icon>
+              Delete car
+            </button>
+          }
         </div>
       </div>
     } @else {

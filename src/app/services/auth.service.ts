@@ -88,4 +88,24 @@ export class AuthService {
       return null;
     }
   }
+
+  public isUserRole(): boolean {
+    const token = localStorage.getItem(this.tokenKey);
+    if (!token) {
+      return false;
+    }
+
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+
+      const tokenRole: string | null =
+        payload['role'] ??
+        payload['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] ??
+        null;
+
+      return tokenRole === 'user';
+    } catch {
+      return false;
+    }
+  }
 }

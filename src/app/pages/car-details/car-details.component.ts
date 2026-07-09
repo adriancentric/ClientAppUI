@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { map, switchMap } from 'rxjs';
 import { CarsService } from '../../services/cars.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-car-details',
@@ -17,11 +18,16 @@ export class CarDetailsComponent {
   // car$ is an Observable that emits the selected car from the API.
   protected readonly car$;
 
+  protected readonly isUserRole: boolean;
+
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly carsService: CarsService
+    private readonly carsService: CarsService,
+    private readonly authService: AuthService
   ) {
+    this.isUserRole = this.authService.isUserRole();
+
     // Read the id from the /cars/:id route, then request that car from CarsService.
     this.car$ = this.route.params.pipe(
       // Convert the route parameter from string to number.
